@@ -59,7 +59,8 @@ int main(int argc, char** argv) {
     double potReactiva = 0;
     double factorPot = 0;
     BYTE valor;
-
+    BYTE cnt=0;
+    UINT32 mediaVoltaje = 0;
 #ifdef _RELOJ_FRC
 
     /* Configure Oscillator to operate the device at 40Mhz
@@ -165,7 +166,7 @@ int main(int argc, char** argv) {
 
 
             voltageAccMean = voltageAcc / SMP_BUFFER;
-            voltageRMS = (double) sqrt(voltageAccMean); //factor de ajuste ????
+            mediaVoltaje +=  sqrt(voltageAccMean); //factor de ajuste ????
 
 
             currentAccMean = currentAcc / SMP_BUFFER;
@@ -180,6 +181,12 @@ int main(int argc, char** argv) {
             potReactiva = sqrt((UINT32) (potAparente * potAparente - potActiva * potActiva));
 
 
+            if(++cnt > 5)
+            {
+             voltageRMS=(double) mediaVoltaje/5;
+             mediaVoltaje=0;
+             cnt=0;
+            }
 
 
             //   sprintf(buffer, "%3.1f;%2.1f;%4.0f;%4.0f;%4.0f;%1.1f\r\n", voltageRMS, corrienteRMS \
@@ -235,7 +242,7 @@ void _ISR __attribute__((__no_auto_psv__)) _T1Interrupt(void) {
     static int count = 0;
     static BYTE ticks = 0;
 
-    if (count++ > 399) {
+    if (count++ > 199) {
         bVisu = TRUE;
         count = 0;
     }

@@ -92,8 +92,8 @@
         <property key="legacy-libc" value="false"/>
         <property key="output-file-format" value="elf"/>
       </C30Global>
-      <MICROSTICKPlatformTool>
-      </MICROSTICKPlatformTool>
+      <PICkit3PlatformTool>
+      </PICkit3PlatformTool>
     </conf>
   </confs>
 </configurationDescriptor>
