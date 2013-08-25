@@ -218,7 +218,7 @@ int main(int argc, char** argv) {
             voltageAcc = 0;
             currentAcc = 0;
             powerAcc = 0;
-            LED ^= 1;
+            LED = !LED;
             bVisu = FALSE;
 
         }
