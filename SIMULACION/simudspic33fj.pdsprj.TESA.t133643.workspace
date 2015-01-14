@@ -1,26 +1,29 @@
 <?xml version='1.0' encoding='UTF-8' standalone='yes'?>
 <WORKSPACE>
  <FRAME activewindow="0">
-  <PLACEMENT>2c0000000200000003000000ffffffffffffffffffffffffffffffff0800000009000000f9030000da020000</PLACEMENT>
+  <PLACEMENT>2c00000002000000030000000083ffff0083ffffffffffffffffffff0800000009000000f9030000da020000</PLACEMENT>
   <WINDOW type="default" module="ISIS"/>
  </FRAME>
  <MODULE name="VSMDEBUG">
   <PWI>
    <POPUP w="1016" x="0" flags="00000003" y="52" h="171" pid="0" iid="-1">
     <PROPERTIES>
-     <ITEM name="Message Column Width">768</ITEM>
+     <ITEM name="Message Column Width">758</ITEM>
      <ITEM name="ShowGrid">No</ITEM>
      <ITEM name="Source Column Width">100</ITEM>
      <ITEM name="Time Column Width">120</ITEM>
      <ITEM name="Version">100</ITEM>
     </PROPERTIES>
    </POPUP>
-   <POPUP w="350" x="4" flags="00000032" y="98" h="100" pid="1" iid="-1">
+   <POPUP w="459" x="26" flags="00000033" y="672" h="195" pid="1" iid="-1">
     <PROPERTIES>
      <ITEM name="Address Column Width">87</ITEM>
      <ITEM name="AutoResize">No</ITEM>
      <ITEM name="Gridlines">Yes</ITEM>
-     <ITEM name="Name Column Width">87</ITEM>
+     <ITEM name="Item 0">"_inSamplesVolt[0]","0x0900",00000020,00000004,256,2,4,00000003,0,00000000,00000000</ITEM>
+     <ITEM name="Item 1">"_inSamplesCurr","0x0800",00000020,00000004,0,256,-1,F9770000,0,00000000,00000000</ITEM>
+     <ITEM name="Item 2">"TMR3","0x010A",00000020,00000005,266,2,2,00000003,0,00000000,00000000</ITEM>
+     <ITEM name="Name Column Width">178</ITEM>
      <ITEM name="ShowAddresses">Yes</ITEM>
      <ITEM name="ShowPreviousValues">No</ITEM>
      <ITEM name="ShowTypes">No</ITEM>
@@ -29,24 +32,24 @@
      <ITEM name="Value Column Width">87</ITEM>
      <ITEM name="Version">100</ITEM>
      <ITEM name="Watch Expression Column Width">87</ITEM>
-     <ITEM name="nItems">0</ITEM>
+     <ITEM name="nItems">3</ITEM>
     </PROPERTIES>
    </POPUP>
-   <POPUP w="450" x="543" flags="00000063" y="436" h="250" pid="0" iid="6">
+   <POPUP w="450" x="543" flags="00000023" y="436" h="250" pid="0" iid="6">
     <PROPERTIES>
      <ITEM name="AutoEcho">0</ITEM>
      <ITEM name="HexMode">0</ITEM>
     </PROPERTIES>
    </POPUP>
-   <POPUP w="1012" x="0" flags="0000802b" y="145" h="371" pid="1" iid="32">
+   <POPUP w="1012" x="25" flags="0000002b" y="84" h="371" pid="1" iid="32">
     <PROPERTIES>
-     <ITEM name="Breakpoint 0">"__ADC1Interrupt",226E,000E,7093,6F0F,-1
+     <ITEM name="Breakpoint 0">"__ADC1Interrupt",2312,0008,7093,FB92,-1
 </ITEM>
-     <ITEM name="Breakpoint 1">"__ADC1Interrupt",228C,002C,DFA7,6F0F,-1
+     <ITEM name="Breakpoint 1">"__ADC1Interrupt",2338,002E,AD13,FB92,1
 </ITEM>
-     <ITEM name="Breakpoint 2">"__ADC1Interrupt",22A8,0048,CD70,6F0F,-1
+     <ITEM name="Breakpoint 2">"__INT1Interrupt",1EA6,000A,8CFB,64DD,1
 </ITEM>
-     <ITEM name="Breakpoint 3">"__ADC1Interrupt",22AA,004A,4579,6F0F,-1
+     <ITEM name="Breakpoint 3">"__INT1Interrupt",1EB2,0016,FBC7,64DD,1
 </ITEM>
      <ITEM name="Breakpoint 4">"__ADC1Interrupt",22D2,0072,7089,6F0F,-1
 </ITEM>
@@ -66,15 +69,15 @@
      <ITEM name="DISPOPCODES">No</ITEM>
      <ITEM name="FIXUPBPTS">Yes</ITEM>
      <ITEM name="WordsOnly">No</ITEM>
-     <ITEM name="nBreakpoints">10</ITEM>
+     <ITEM name="nBreakpoints">3</ITEM>
     </PROPERTIES>
    </POPUP>
-   <POPUP w="1016" x="0" flags="0000000b" y="442" h="211" pid="2" iid="32">
+   <POPUP w="1016" x="22" flags="0000800b" y="459" h="211" pid="2" iid="32">
     <PROPERTIES>
      <ITEM name="Address Column Width">99</ITEM>
      <ITEM name="AutoResize">No</ITEM>
      <ITEM name="Gridlines">Yes</ITEM>
-     <ITEM name="Name Column Width">183</ITEM>
+     <ITEM name="Name Column Width">222</ITEM>
      <ITEM name="ShowAddresses">Yes</ITEM>
      <ITEM name="ShowGlobals">Yes</ITEM>
      <ITEM name="ShowPreviousValues">No</ITEM>
@@ -109,7 +112,7 @@
      <ITEM name="TopLineAddress">00000800</ITEM>
     </PROPERTIES>
    </POPUP>
-   <POPUP w="1" x="4" flags="0000000a" y="98" h="1" pid="5" iid="32">
+   <POPUP w="8" x="4" flags="0000000a" y="98" h="10" pid="5" iid="32">
     <PROPERTIES>
      <ITEM name="DataType">2</ITEM>
      <ITEM name="DispChars">Yes</ITEM>

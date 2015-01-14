@@ -24,8 +24,6 @@ void initAD(void) {
     _LATB1 = 0;
     _TRISB1 = 1;
 
-
-
     AD1CON1bits.ADON = 0; // Turn on the A/D converter
     AD1CON1bits.FORM = 0b00; //0;   //INTEGER)
     AD1CON1bits.SSRC = 2; //010 = Timer3 compare ends sampling and starts conversion
@@ -65,7 +63,7 @@ void initAD(void) {
     IFS0bits.T3IF = 0;
     IEC0bits.T3IE = 0;
     //Start Timer 3
-    T3CON = 0x8030; //T3 ON ,0.0625us x 256 16us
+    T3CON = 0x8020; //T3 ON ,0.0625us x 256 16us
 
 
     AD1CON1bits.ADON = 0; // Turn on the A/D converter
@@ -90,8 +88,9 @@ void setBufferFull(BOOL estado) {
 
 void startMedidas() {
 
-    IEC0bits.AD1IE = 1; // Enable ADC
-    AD1CON1bits.ADON = 1;
+   // IEC0bits.AD1IE = 1; // Enable ADC
+   // AD1CON1bits.ADON = 1;
+    IEC1bits.INT1IE  = 1;
     bBufferFull = FALSE;
 
 }
@@ -104,6 +103,7 @@ void _ISR __attribute__((__no_auto_psv__)) _ADC1Interrupt(void) {
     inSamplesCurr[adcCntr] = ADC1BUF3; //ReadADC10( 1 );
     inSamplesVolt[adcCntr] = ADC1BUF0; //ReadADC10( 1 );
 
+    /*
     temp = ADC1BUF0;
     if (temp > 512) temp -= 512;
     else if (temp < 512) temp = 512 - temp;
@@ -121,10 +121,11 @@ void _ISR __attribute__((__no_auto_psv__)) _ADC1Interrupt(void) {
 
     powerAcc += iinst * vinst;
 
-
-    if (++adcCntr >= SMP_BUFFER - 1) {
+    */
+    if (++adcCntr >= SMP_BUFFER ) {
         IEC0bits.AD1IE = 0;
         AD1CON1bits.ADON = 0;
+        IEC1bits.INT1IE  = 0; // enable INT1
         adcCntr = 0;
         bBufferFull = TRUE;
 

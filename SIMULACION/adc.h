@@ -12,7 +12,7 @@
 
 
 #define SMP_BUFFER   128     //32 muestras
-#define SMPERIODO    20 //39     //100 Hz                    // (FCY/FSAMPLE) - 1 ????
+#define SMPERIODO    9    //20 //39     //100 Hz                    // (FCY/FSAMPLE) - 1 ????
 #define VDD          3.3
 #define K_TRAFO      17
 #define K_DIV        6.66

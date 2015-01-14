@@ -137,9 +137,30 @@ int main(void) {
     IFS0bits.T1IF = 0;
     IEC0bits.T1IE = 1;
 
-
     // Start timer
     T1CONbits.TON = 1;
+
+    //INT1 sobre RB8
+    _TRISB8 = 1;    //RB7 -> RX
+    asm volatile ("mov #OSCCONL, w1  \n"
+                "mov #0x46, w2     \n"
+                "mov #0x57, w3     \n"
+                "mov.b w2, [w1]    \n"
+                "mov.b w3, [w1]    \n"
+                "bclr OSCCON, #6");
+
+
+    RPINR0bits.INT1R = 8;        //RB8 INT1
+
+    asm volatile ("mov #OSCCONL, w1  \n"
+                "mov #0x46, w2     \n"
+                "mov #0x57, w3     \n"
+                "mov.b w2, [w1]    \n"
+                "mov.b w3, [w1]    \n"
+                "bset OSCCON, #6");
+
+    IFS1bits.INT1IF  = 0;
+    IEC1bits.INT1IE  = 0; // enable INT1
 
 
     initAD();
@@ -215,7 +236,7 @@ int main(void) {
 
 
 //Interrupciones
-
+//********************************************************
 void _ISR __attribute__((__no_auto_psv__)) _T1Interrupt(void) {
 
     static BYTE count = 0;
@@ -225,4 +246,14 @@ void _ISR __attribute__((__no_auto_psv__)) _T1Interrupt(void) {
 
     // Reset interrupt flag
     IFS0bits.T1IF = 0;
+}
+
+//******************************************************
+void __attribute__((__interrupt__)) _INT1Interrupt(void)
+{
+   IEC0bits.AD1IE = 1;
+   AD1CON1bits.ADON = 1;
+   TMR3 = 0x0000;
+   IEC1bits.INT1IE  = 0;
+   IFS1bits.INT1IF  = 0; // Reset Flag interrupt INT1
 }
